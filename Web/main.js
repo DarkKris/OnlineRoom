@@ -21,8 +21,13 @@ function ws(){
         ws.send(jsonStr)
     };
 
-    ws.onmessage = function() {
-        // TODO 解析并显示信息
+    ws.onmessage = function(evt) {
+        let nick = evt.data.Nick;
+        let type = evt.data.Type;
+        let msg  = evt.data.Message;
+        let Time = evt.data.Time;
+
+        
     };
 
     ws.onclose = function() {
