@@ -49,21 +49,26 @@ function wsfunc(){
                 app2.msgList.push({text:"\""+nick+"\"已进入房间",cls:"notice"});
                 break;
             case "send":
+                // TODO 完善逻辑
+                // app2.msgList.push({text:"\""+nick+"\"已进入房间",cls:"user-msg"});
                 break;
             case "logout":
+                app2.msgList.push({text:"\""+nick+"\"已退出房间",cls:"notice"});
                 break;
             case "err":
+                app2.msgList.push({text:"发生错误",cls:"notice"});
                 break;
         }
     };
 
     ws.onclose = function() {
-        // TODO 显示服务器已关闭
+        app2.msgList.push({text:"服务器已关闭",cls:"notice"});
+        // 显示服务器已关闭
     };
 
     ws.onerror = function(err) {
-        // TODO 显示错误
-        let data = err.data
+        // 显示错误
+        app2.msgList.push({text:"error : "+err.data,cls:"notice"});
     };
 
     // TODO 监听send按钮发送消息
