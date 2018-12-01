@@ -1,5 +1,6 @@
-windows.onload = function(){
+window.onload = function(){
     ws();
+    console.log(sessionStorage.getItem("nickname"));
 };
 
 function ws(){
@@ -9,10 +10,10 @@ function ws(){
         let json = [];
         let rows = {};
 
-        rows.nick = NickName; //NickName
-        rows.time = new Date().getTime();
+        rows.nick = sessionStorage.getItem("nickname"); //NickName
         rows.type = "login";
-        rows.Message = "";
+        rows.message = "";
+        rows.time = new Date().getTime().toString();
 
         json.push(rows);
 
@@ -22,17 +23,35 @@ function ws(){
     };
 
     ws.onmessage = function(evt) {
-        let nick = evt.data.Nick;
-        let type = evt.data.Type;
-        let msg  = evt.data.Message;
-        let Time = evt.data.Time;
+        let jsonObj = JSON.parse(evt.data);
 
-        
+        let nick = jsonObj.nick;
+        let type = jsonObj.type;
+        let msg  = jsonObj.message;
+        let Time = jsonObj.time;
+
+        console.log(nick,type,msg,Time);
+
+        switch(type){
+            case "login":
+                break;
+            case "send":
+                break;
+            case "logout":
+                break;
+            case "err":
+                break;
+        }
     };
 
     ws.onclose = function() {
         // TODO 显示服务器已关闭
-    }
+    };
+
+    ws.onerror = function(err) {
+        // TODO 显示错误
+        let data = err.data
+    };
 
     // TODO 监听send按钮发送消息
 
