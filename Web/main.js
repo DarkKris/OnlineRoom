@@ -1,9 +1,21 @@
 window.onload = function(){
-    ws();
-    console.log(sessionStorage.getItem("nickname"));
+    wsfunc();
+    // console.log(sessionStorage.getItem("nickname"));
 };
 
-function ws(){
+function wsfunc(){
+    let app2 = new Vue({
+        el: '#app2',
+        data: {
+            msgList: [
+                {
+                    text: '欢迎来到OnlineRoom',
+                    cls: 'notice'
+                },
+            ]
+        }
+    });
+
     ws = new WebSocket("ws://127.0.0.1:9501/ws");
 
     ws.onopen = function() {
@@ -30,10 +42,11 @@ function ws(){
         let msg  = jsonObj.message;
         let Time = jsonObj.time;
 
-        console.log(nick,type,msg,Time);
+        // console.log(nick,type,msg,Time);
 
         switch(type){
             case "login":
+                app2.msgList.push({text:"\""+nick+"\"已进入房间",cls:"notice"});
                 break;
             case "send":
                 break;

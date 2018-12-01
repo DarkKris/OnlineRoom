@@ -7,8 +7,11 @@
 </head>
 <body>
 <div style="background-color: rgba(12,12,12,12);height: 100%;width: 100%;">
-    <div class="text-frame">
-        <span class="notice">
+    <div class="text-frame" id="app2">
+        <span v-for="msg in msgList" v-bind:class="msg.cls">
+            {{msg.text}}
+        </span>
+        <!--<span class="notice">
             "<span class="nick">DarkKris</span>"已进入房间
         </span>
 
@@ -19,7 +22,7 @@
         <span class="user-msg">
             <span class="alias alias-defualt"></span>
             <span class="msg">我觉得行</span>
-        </span>
+        </span>-->
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
