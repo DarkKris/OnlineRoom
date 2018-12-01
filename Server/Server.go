@@ -52,6 +52,8 @@ func main() {
 		http.ListenAndServe(params.htmlPort, mux)
 	}()
 
+	log.Infof("Server start at %s", time.Now().String())
+
 	select{}
 }
 
@@ -61,7 +63,7 @@ func webSocket(ws *websocket.Conn) {
 
 	for {
 		if err := websocket.Message.Receive(ws, &data);err != nil {
-			log.Infof("接收出错 : %s",user[ws])
+			log.Infof("%s 接收出错 : %s",time.Now().String(),user[ws])
 			delete(user, ws)
 			break
 		}
