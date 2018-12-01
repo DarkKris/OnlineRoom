@@ -1,6 +1,7 @@
 window.onload = function(){
     wsfunc();
     // console.log(sessionStorage.getItem("nickname"));
+    listenFunc();
 };
 
 function wsfunc(){
@@ -46,32 +47,61 @@ function wsfunc(){
 
         switch(type){
             case "login":
-                app2.msgList.push({text:"\""+nick+"\"已进入房间",cls:"notice"});
+                app2.msgList.push({
+                    text: "\""+nick+"\"已进入房间",
+                    cls: "notice"
+                });
                 break;
             case "send":
                 // TODO 完善逻辑
                 // app2.msgList.push({text:"\""+nick+"\"已进入房间",cls:"user-msg"});
                 break;
             case "logout":
-                app2.msgList.push({text:"\""+nick+"\"已退出房间",cls:"notice"});
+                app2.msgList.push({
+                    text: "\""+nick+"\"已退出房间",
+                    cls: "notice"
+                });
                 break;
             case "err":
-                app2.msgList.push({text:"发生错误",cls:"notice"});
+                app2.msgList.push({
+                    text: "发生错误",
+                    cls: "notice"
+                });
                 break;
         }
     };
 
     ws.onclose = function() {
-        app2.msgList.push({text:"服务器已关闭",cls:"notice"});
+        app2.msgList.push({
+            text: "服务器已关闭",
+            cls: "notice"
+        });
         // 显示服务器已关闭
     };
 
-    ws.onerror = function(err) {
-        // 显示错误
-        app2.msgList.push({text:"error : "+err.data,cls:"notice"});
-    };
+    // ws.onerror = function(err) { // 暂时取消onError
+    //     // 显示错误
+    //     if(err.data == null)
+    //     {
+    //         app2.msgList.push({text:"服务器未启动",cls:"notice"});
+    //     }else{
+    //         app2.msgList.push({text:"error:"+err.data,cls:"notice"});
+    //     }
+    // };
 
     // TODO 监听send按钮发送消息
 
     // TODO 监听logout按钮发送离线消息
+}
+
+function listenFunc() {
+    let app3 = new Vue({
+        el: '#app3',
+        data: {
+
+        },
+        method: {
+
+        }
+    });
 }
