@@ -51,19 +51,20 @@ li {
     width: 100%;
     /*border: solid 1px aliceblue;*/
     height: 80%;
+    font-size: 3.5em;
 }
 
 .notice {
     display: block;
     width: min-content;
     color: aliceblue;
-    font-size: 35px;
+    font-size: 0.6em;
     opacity: 0.3;
     border: solid aliceblue 1px;
     border-radius: 30px;
-    padding: 5px 15px 5px 15px;
+    padding: 5px 30px 5px 30px;
     text-align: center;
-    margin: 7px auto;
+    margin: 12px auto;
     left: 0;
     right: 0;
     word-break: keep-all;
@@ -71,6 +72,7 @@ li {
 
 .user-msg {
     display: block;
-    font-size: 50px;
-    color: rgba(246,250,243);
+    font-size: 1em;
+    color: rgb(246,250,243);
+    margin: 15px auto;
 }
