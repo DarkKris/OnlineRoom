@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+    <link rel="stylesheet" href="main.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div>
+    <div id="app" align="center">
+        <span>
+            USERNAME: <input v-model="message" placeholder="Nickname" type="text">
+        </span>
+        <button v-on:click="enterRoom">Enter !</button>
+        <span v-if="seen" id="errSpan">
+            {{errMsg}}
+        </span>
+    </div>
+</div>
+<script>
+    window.onload = function() {
+        let storage = window.sessionStorage;
+
+        new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                seen: false,
+                errMsg: ''
+            },
+            methods: {
+                enterRoom: function() {
+                    let resNick;
+                    resNick = this.message.replace(" ",'');
+
+                    if(resNick === ''){
+                        // TODO 输入错误处理
+                        this.errMsg = "请输入有效的NickName";
+                        this.seen = true;
+                        return;
+                    }
+                    if(resNick.length > 10){
+                        // TODO 长度错误处理
+                        this.errMsg = "NickName长度请小于10";
+                        this.seen = true;
+                        return;
+                    }
+                    storage["nickname"] = resNick;
+                    window.location = "./OnlineRoom.html";
+                }
+            }
+        })
+    };
+</script>
+</body>
+</html>

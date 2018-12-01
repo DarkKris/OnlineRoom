@@ -8,6 +8,45 @@ li {
     list-style: none;
 }
 
+#app {
+    margin: 50% 0;
+    color: rgb(255,255,255);
+    font-size: 2.9em;
+}
+
+#app >#errSpan {
+    display: block;
+    color: brown;
+}
+
+#app >span>input {
+    border: black 5px solid;
+    border-radius: 100px;
+    text-align: center;
+    /*display: block;*/
+    height: 80px;
+    width: 40%;
+    font-size: 1em;
+    /*color: rgb(116,116,116);*/
+    color: black;
+    background: rgba(255,255,255,1);
+    margin-left: 20px;
+}
+
+#app >button {
+    display: block;
+    width: 64%;
+    height: 90px;
+    font-size: 1em;
+    border: white 5px solid;
+    border-radius: 100px;
+    text-align: center;
+    margin: 45px 0;
+    background: rgba(0,0,0,0);
+    /*color: rgb(116,116,116);*/
+    color: white;
+}
+
 .text-frame {
     width: 100%;
     /*border: solid 1px aliceblue;*/
