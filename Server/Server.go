@@ -6,9 +6,9 @@ import (
 	"github.com/sirupsen/logrus"
 	"net/http"
 	"golang.org/x/net/websocket"
-	"strings"
 	"encoding/json"
 	"time"
+	"strings"
 )
 
 var params Params
@@ -60,17 +60,17 @@ func webSocket(ws *websocket.Conn) {
 	var userMsg PostData
 
 	for {
-		err := websocket.Message.Receive(ws, &data)
-		if err != nil {
+		if err := websocket.Message.Receive(ws, &data);err != nil {
 			log.Infof("接收出错 : %s",user[ws])
 			delete(user, ws)
 			break
 		}
 
 		data = strings.Replace(data, "\n", "", 0)
-		err = json.Unmarshal([]byte(data), &userMsg)
-		if err != nil {
-			log.Warningf("json unmarshal failed : %v",err)
+		data = data[1:len(data)-1]
+		//log.Infof("%s",data)
+		if err := json.Unmarshal([]byte(data), &userMsg);err != nil {
+			log.Warningf("json unmarshal failed on Server.go 73 : %v",err) // rows 73
 			go sendMsg(userMsg.Nick, "err", "", ws)
 			continue
 		}
@@ -124,6 +124,9 @@ func sendMsg(Nick, Type, Msg string, ws *websocket.Conn) {
 	}
 }
 
+/*
+command-Line params struct
+ */
 type Params struct {
 	WebSocketPort	string
 	logUrl			string
@@ -131,6 +134,9 @@ type Params struct {
 	htmlPort		string
 }
 
+/*
+json data struct
+ */
 type PostData struct {
 	Nick	string	`json:"nick"`
 	Type	string	`json:"type"`
