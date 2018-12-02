@@ -122,6 +122,9 @@ function listenFunc() {
 
                 ws.send(jsonStr);
                 this.umsg = '';
+            },
+            refresh: function(){
+
             }
         }
     });

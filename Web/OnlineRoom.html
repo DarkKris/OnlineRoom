@@ -23,8 +23,9 @@
     </div>
 
     <div class="input-frame" id="app3" align="center">
-        <input type="text" placeholder="input..." v-model="umsg">
+        <input type="text" placeholder="input..." v-model="umsg" v-on:keyup.enter="sendMsg">
         <button type="submit" v-on:click="sendMsg">Post !</button>
+        <!--<img src="../attach/re.png" width="48" height="48" align="right" style="margin-right: 23px;" v-on:click="">-->
     </div>
 </div>
 <script src="main.js"></script>

@@ -105,9 +105,11 @@ li {
     font-size: 1em;
     border-radius: 50px;
     border: white;
+    padding-left: 13px;
 }
 
 .input-frame >button {
     width: 40%;
     font-size: 1em;
+    /*margin-right: -23px;*/
 }
