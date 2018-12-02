@@ -1,6 +1,10 @@
 window.onload = function(){
+    if(sessionStorage.getItem("nickname")==null)
+    {
+        window.location="./index.html";
+    }
+
     wsfunc();
-    // console.log(sessionStorage.getItem("nickname"));
     listenFunc();
 };
 
