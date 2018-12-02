@@ -60,6 +60,9 @@ func main() {
 	select{}
 }
 
+/*
+Func to handle WebSocket Connection
+ */
 func webSocket(ws *websocket.Conn) {
 	var data string
 	var userMsg PostData
@@ -75,7 +78,7 @@ func webSocket(ws *websocket.Conn) {
 		data = data[1:len(data)-1]
 		//log.Infof("%s",data)
 		if err := json.Unmarshal([]byte(data), &userMsg);err != nil {
-			log.Warningf("json unmarshal failed on Server.go 73 : %v",err) // rows 73
+			log.Warningf("json unmarshal failed on Server.go 81 : %v",err) // rows 73
 			go sendMsg(userMsg.Nick, "err", "", ws)
 			continue
 		}
@@ -112,6 +115,9 @@ func webSocket(ws *websocket.Conn) {
 //	http.ServeFile(w, r, "../")
 //}
 
+/*
+send json message to web through WebSocket
+ */
 func sendMsg(Nick, Type, Msg string, ws *websocket.Conn) {
 	tmpData := PostData{
 		Nick: Nick,
