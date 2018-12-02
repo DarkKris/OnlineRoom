@@ -82,6 +82,10 @@ li {
     margin: 15px auto;
 }
 
+.user-msg >span>label{
+    font-size: 0.5em;
+}
+
 .input-frame {
     width: 100%;
     background: antiquewhite;

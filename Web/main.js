@@ -59,6 +59,7 @@ function wsfunc(){
                     cls:"user-msg",
                     alias: sessionStorage.getItem(""),
                     color: sessionStorage.getItem(""),
+                    nick: nick,
                 });
                 break;
             case "logout":

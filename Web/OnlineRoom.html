@@ -16,6 +16,7 @@
 
             <span v-if="msg.cls == 'user-msg'">
                 <span v-bind:class="msg.alias"></span>
+                <label>{{msg.nick}}</label>
                 <span v-bind:class="msg.color">{{msg.text}}</span>
             </span>
         </span>
