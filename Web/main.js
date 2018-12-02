@@ -103,6 +103,10 @@ function listenFunc() {
         },
         methods: {
             sendMsg: function(){
+                // 检测消息为空
+                if(this.umsg === "")
+                    return;
+
                 let json = [];
                 let rows = {};
 
@@ -115,7 +119,8 @@ function listenFunc() {
 
                 let jsonStr = JSON.stringify(json);
 
-                ws.send(jsonStr)
+                ws.send(jsonStr);
+                this.umsg = '';
             }
         }
     });
