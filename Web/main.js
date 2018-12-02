@@ -11,7 +11,7 @@ function wsfunc(){
             msgList: [
                 {
                     text: '欢迎来到OnlineRoom',
-                    cls: 'notice'
+                    cls: 'notice',
                 },
             ]
         }
@@ -49,23 +49,28 @@ function wsfunc(){
             case "login":
                 app2.msgList.push({
                     text: "\""+nick+"\"已进入房间",
-                    cls: "notice"
+                    cls: "notice",
                 });
                 break;
             case "send":
                 // TODO 完善逻辑
-                // app2.msgList.push({text:"\""+nick+"\"已进入房间",cls:"user-msg"});
+                app2.msgList.push({
+                    text:msg,
+                    cls:"user-msg",
+                    alias: sessionStorage.getItem(""),
+                    color: sessionStorage.getItem(""),
+                });
                 break;
             case "logout":
                 app2.msgList.push({
                     text: "\""+nick+"\"已退出房间",
-                    cls: "notice"
+                    cls: "notice",
                 });
                 break;
             case "err":
                 app2.msgList.push({
                     text: "发生错误",
-                    cls: "notice"
+                    cls: "notice",
                 });
                 break;
         }
@@ -88,20 +93,34 @@ function wsfunc(){
     //         app2.msgList.push({text:"error:"+err.data,cls:"notice"});
     //     }
     // };
-
-    // TODO 监听send按钮发送消息
-
-    // TODO 监听logout按钮发送离线消息
 }
 
 function listenFunc() {
     let app3 = new Vue({
         el: '#app3',
         data: {
-
+            umsg: ""
         },
-        method: {
+        methods: {
+            sendMsg: function(){
+                let json = [];
+                let rows = {};
 
+                rows.nick = sessionStorage.getItem("nickname"); //NickName
+                rows.type = "send";
+                rows.message = this.umsg;
+                rows.time = new Date().getTime().toString();
+
+                json.push(rows);
+
+                let jsonStr = JSON.stringify(json);
+
+                ws.send(jsonStr)
+            }
         }
     });
+
+    // TODO 监听send按钮发送消息
+
+    // TODO 监听logout按钮发送离线消息
 }

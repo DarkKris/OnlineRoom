@@ -29,24 +29,29 @@
                 seen: false,
                 errMsg: ''
             },
+            watch: {
+                errMsg: function (val) {
+                    this.seen = true
+                }
+            },
             methods: {
                 enterRoom: function() {
                     let resNick;
                     resNick = this.message.replace(" ",'');
 
                     if(resNick === ''){
-                        // TODO 输入错误处理
+                        // 输入错误处理
                         this.errMsg = "请输入有效的NickName";
-                        this.seen = true;
                         return;
                     }
                     if(resNick.length > 10){
-                        // TODO 长度错误处理
+                        // 长度错误处理
                         this.errMsg = "NickName长度请小于10";
-                        this.seen = true;
                         return;
                     }
                     storage["nickname"] = resNick;
+                    storage["alias"] = Math.random(); // TODO 根据random选择头像
+                    storage["color"] = Math.random(); // TODO 根据random选择颜色
                     window.location = "./OnlineRoom.html";
                 }
             }
