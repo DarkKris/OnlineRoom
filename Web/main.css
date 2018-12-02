@@ -51,6 +51,7 @@ li {
 }
 
 .text-frame {
+    overflow: auto;
     width: 100%;
     /*border: solid 1px aliceblue;*/
     height: 80%;
@@ -111,5 +112,6 @@ li {
 .input-frame >button {
     width: 40%;
     font-size: 1em;
+    background: rgba(0,0,0,0);
     /*margin-right: -23px;*/
 }

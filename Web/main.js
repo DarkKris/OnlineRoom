@@ -79,6 +79,8 @@ function wsfunc(){
                 });
                 break;
         }
+        let oWords = document.getElementById('app2');
+        oWords.scrollTop = oWords.scrollHeight;
     };
 
     ws.onclose = function() {
@@ -86,6 +88,8 @@ function wsfunc(){
             text: "服务器已关闭",
             cls: "notice"
         });
+        let oWords = document.getElementById('app2');
+        oWords.scrollTop = oWords.scrollHeight;
         // 显示服务器已关闭
     };
 
