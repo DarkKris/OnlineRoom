@@ -12,7 +12,7 @@
         <span>
             USERNAME: <input v-model="message" placeholder="Nickname" type="text">
         </span>
-        <button v-on:click="enterRoom">Enter !</button>
+        <button v-on:click="enterRoom" v-on:keyup.13="enterRoom">Enter !</button>
         <span v-if="seen" id="errSpan">
             {{errMsg}}
         </span>
