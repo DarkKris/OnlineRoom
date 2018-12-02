@@ -71,6 +71,7 @@ func webSocket(ws *websocket.Conn) {
 		if err := websocket.Message.Receive(ws, &data);err != nil {
 			log.Infof("%s 接收出错 : %s",time.Now().String(),user[ws])
 			delete(user, ws)
+			go sendMsg(userMsg.Nick, "logout", "", ws)
 			break
 		}
 
