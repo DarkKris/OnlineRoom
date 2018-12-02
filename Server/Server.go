@@ -19,7 +19,7 @@ func init() {
 	params = Params{
 		WebSocketPort: ":9501",
 		logUrl: "/tmp/or_log",
-		htmlUrl: "",
+		htmlUrl: "../Web/OnlineRoom.html",
 	}
 
 	log.Out = os.Stdout
@@ -46,11 +46,14 @@ func main() {
 		http.ListenAndServe(params.WebSocketPort,mux)
 	}()
 
-	go func(){
-		mux := http.NewServeMux()
-		mux.HandleFunc("/", display)
-		http.ListenAndServe(params.htmlPort, mux)
-	}()
+	//go func(){
+	//	mux := http.NewServeMux()
+	//	mux.HandleFunc("/index", display)
+	//	mux.HandleFunc("/room", orDisplay)
+	//	mux.HandleFunc("/main.js",jsDisplay)
+	//	mux.HandleFunc("/main.css", cssDisplay)
+	//	http.ListenAndServe(params.htmlPort, mux)
+	//}()
 
 	log.Infof("Server start at %s", time.Now().String())
 
@@ -93,9 +96,21 @@ func webSocket(ws *websocket.Conn) {
 	}
 }
 
-func display(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, params.htmlUrl)
-}
+//func display(w http.ResponseWriter, r *http.Request) {
+//	http.ServeFile(w, r, "../Web/index.html")
+//}
+//
+//func orDisplay(w http.ResponseWriter, r *http.Request) {
+//	http.ServeFile(w, r, params.htmlUrl)
+//}
+//
+//func jsDisplay(w http.ResponseWriter, r *http.Request) {
+//	http.ServeFile(w, r, "../Web/main.js")
+//}
+//
+//func cssDisplay(w http.ResponseWriter, r *http.Request) {
+//	http.ServeFile(w, r, "../")
+//}
 
 func sendMsg(Nick, Type, Msg string, ws *websocket.Conn) {
 	tmpData := PostData{
