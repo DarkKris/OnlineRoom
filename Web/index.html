@@ -20,7 +20,12 @@
 </div>
 <script>
     window.onload = function() {
-        let storage = window.sessionStorage;
+        if(localStorage.getItem('nickname')!=null && localStorage.getItem('alias')!=null && localStorage.getItem('color')!=null)
+        {
+            window.location = "./OnlineRoom.html";
+        }
+
+        let storage = window.localStorage;
 
         new Vue({
             el: '#app',

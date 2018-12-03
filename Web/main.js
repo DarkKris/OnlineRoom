@@ -1,5 +1,5 @@
 window.onload = function(){
-    if(sessionStorage.getItem("nickname")==null)
+    if(localStorage.getItem("nickname")==null)
     {
         window.location="./index.html";
     }
@@ -27,7 +27,7 @@ function wsfunc(){
         let json = [];
         let rows = {};
 
-        rows.nick = sessionStorage.getItem("nickname"); //NickName
+        rows.nick = localStorage.getItem("nickname"); //NickName
         rows.type = "login";
         rows.message = "";
         rows.time = new Date().getTime().toString();
@@ -61,8 +61,8 @@ function wsfunc(){
                 app2.msgList.push({
                     text:msg,
                     cls:"user-msg",
-                    alias: sessionStorage.getItem(""),
-                    color: sessionStorage.getItem(""),
+                    alias: localStorage.getItem(""),
+                    color: localStorage.getItem(""),
                     nick: nick,
                 });
                 break;
@@ -119,7 +119,7 @@ function listenFunc() {
                 let json = [];
                 let rows = {};
 
-                rows.nick = sessionStorage.getItem("nickname"); //NickName
+                rows.nick = localStorage.getItem("nickname"); //NickName
                 rows.type = "send";
                 rows.message = this.umsg;
                 rows.time = new Date().getTime().toString();
