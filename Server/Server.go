@@ -77,7 +77,7 @@ func webSocket(ws *websocket.Conn) {
 
 		data = strings.Replace(data, "\n", "", 0)
 		data = data[1:len(data)-1]
-		//log.Infof("%s",data)
+		log.Infof("recv : %s",data)
 		if err := json.Unmarshal([]byte(data), &userMsg);err != nil {
 			log.Warningf("json unmarshal failed on Server.go 81 : %v",err) // rows 73
 			go sendMsg(userMsg.Nick, "err", "", ws)
